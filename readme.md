@@ -5,17 +5,6 @@ web en permettant de détecter et réduire certains types d'attaques, dont les a
 (Cross Site Scripting), ClickJacking, et les injections de contenu. Ces attaques peuvent être utilisées dans divers buts, 
 comme le vol de données, le défacement de site ou la diffusion de malware.
 
-## documentation : 
-
- - https://developer.mozilla.org/fr/docs/Web/HTTP/CSP
- - https://www.w3.org/TR/CSP2/
- - https://www.imperva.com/learn/application-security/content-security-policy-csp-header/
- - https://web.dev/csp/
- - https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
- - CSP Level 3 (2021) : https://www.w3.org/TR/CSP3/
- - CSP Level 2 (2016) : https://www.w3.org/TR/CSP2/ 
- - indication du degré de support par navigateur : https://content-security-policy.com/
-
 ## Activation
 
 Pour activer CSP, vous devez configurer vos serveurs web afin d'ajouter un en-tête (header) HTTP Content-Security-Policy aux réponses. Vous pouvez rencontrer des documents qui mentionnent X-Content-Security-Policy comme en-tête, il s'agit d'une version obsolète qu'il n'est plus utile de supporter.
@@ -63,6 +52,9 @@ Pour chacune des directives suivantes, l'agent utilisateur consultera la directi
     style-src-elem
     style-src-attr
     worker-src
+
+Dans cette page, on remarque que le code javascript inline se charge normalement en l'abscence de l'en-tête CSP : 
+    <a href="example 1 src self/01_example1 without csp.html">Lien</a>
 
 
 ### Exemple 2
@@ -134,13 +126,13 @@ Content-Security-Policy: default-src 'self'; report-uri http://reportcollector.e
 Voici un exemple de rapport envoyé:
 
     {
-    "csp-report": {
-        "document-uri": "http://example.com/connexion.html",
-        "referrer": "",
-        "blocked-uri": "http://example.com/css/style.css",
-        "violated-directive": "style-src cdn.example.com",
-        "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports"
-    }
+        "csp-report": {
+            "document-uri": "http://example.com/connexion.html",
+            "referrer": "",
+            "blocked-uri": "http://example.com/css/style.css",
+            "violated-directive": "style-src cdn.example.com",
+            "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports"
+        }
     }
 
 ## Menaces
@@ -152,9 +144,18 @@ CSP permet aux administrateurs système de réduire ou éliminer les moyens de r
 
 ### Empêcher les écoutes du trafic
 
- le serveur peut indiquer quels protocoles doivent être utilisés et par exemple forcer l'utilisation de HTTPS afin d'améliorer la sécurité. Une stratégie de sécurité complète pour la transmission des données peut non seulement forcer l'utilisation de TLS via HTTPS mais aussi forcer l'utilisation de cookies sécurisés (qui ne peuvent être envoyés qu'en HTTPS) et indiquer de convertir automatiquement toutes les requêtes qui auraient été faites en HTTP simple en requêtes HTTPS. L'utilisation de l'en-tête Strict-Transport-Security (en-US) permet de s'assurer que les navigateurs utilisent obligatoirement des connexions chiffrées en TLS (HTTPS).
+Le serveur peut indiquer quels protocoles doivent être utilisés et par exemple forcer l'utilisation de HTTPS afin d'améliorer la sécurité. Une stratégie de sécurité complète pour la transmission des données peut non seulement forcer l'utilisation de TLS via HTTPS mais aussi forcer l'utilisation de cookies sécurisés (qui ne peuvent être envoyés qu'en HTTPS) et indiquer de convertir automatiquement toutes les requêtes qui auraient été faites en HTTP simple en requêtes HTTPS. L'utilisation de l'en-tête Strict-Transport-Security (en-US) permet de s'assurer que les navigateurs utilisent obligatoirement des connexions chiffrées en TLS (HTTPS).
 
+## Documentation : 
 
+ - https://developer.mozilla.org/fr/docs/Web/HTTP/CSP
+ - https://www.w3.org/TR/CSP2/
+ - https://www.imperva.com/learn/application-security/content-security-policy-csp-header/
+ - https://web.dev/csp/
+ - https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
+ - CSP Level 3 (2021) : https://www.w3.org/TR/CSP3/
+ - CSP Level 2 (2016) : https://www.w3.org/TR/CSP2/ 
+ - indication du degré de support par navigateur : https://content-security-policy.com/
 
 ## Question : 
 
