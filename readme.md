@@ -1,4 +1,4 @@
-# Laboratoire CSP
+# Laboratoire CSP (inline)
 
 Une Content Security Policy (CSP) ou stratégie de sécurité du contenu permet d'améliorer la sécurité des sites
 web en permettant de détecter et réduire certains types d'attaques, dont les attaques XSS (en-US) 
