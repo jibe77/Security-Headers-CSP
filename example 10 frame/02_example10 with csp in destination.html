@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 10 without CSP</title>
+  </head>
+  <body>
+    <!-- la page suivante a la CSP suivante : 
+      content-security-policy	frame-ancestors 'self';
+      et ainsi la page de destination ne peut pas être chargée dans une frame.
+    -->
+    <iframe src="http://localhost:80"></iframe>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 7 without CSP</title>
+    <!-- generation du hash : https://report-uri.com/home/hash -->
+    <!-- msg() -> sha256-So6kX9Z8JoHryyBu7rkEDpdM0H4XaxXtjvjPYsneglE= -->
+    <!-- function msg(){alert("Hello\nHow are you?");} -> 
+                sha256-/HfO09ICX6gYhOra3hBOHie5ahbFZod6LM6k+CXKU2U= -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-/HfO09ICX6gYhOra3hBOHie5ahbFZod6LM6k+CXKU2U=' 'sha256-So6kX9Z8JoHryyBu7rkEDpdM0H4XaxXtjvjPYsneglE=' 'unsafe-hashes';">
+  </head>
+  <body>
+    <button onclick="msg()">Try it</button>
+    <script>function msg(){alert("Hello\nHow are you?");}</script>
+  </body>
+</html>

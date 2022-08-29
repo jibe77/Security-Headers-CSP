@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 5 with CSP Report</title>
+
+    <!-- la fonction de 'report-only' n'est pas prise en compte par les navigateur quand la page est en local -->
+    <!-- il faut appeler la page depuis le protocol HTTP en spécifiant un header-->
+    <!-- meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self';"-->
+    
+    <!-- ce fichier doit être ouvert depuis un serveur Web avec le header -->
+    <!-- 
+        dans le cas d'Apache 2, placer le fichier dans /var/www/html :
+        sudo cp /home/jrenaux/Documents/csp/example\ 5\ reporting/03_example5\ with\ csp\ in\ header.html /var/www/html
+     
+        pour activer le header, il faut activer le module headers :
+        sudo ln -sf /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled/headers.load
+
+        on peut ensuite modifier le fichier de configuration
+        /etc/apache2/sites-enabled/000-default.conf
+        en ajoutant cette ligne :
+        Header always set Content-Security-Policy-Report-Only "default-src 'self';"
+
+        On peut enfin ouvrir la page : 
+        http://localhost/03_example5%20with%20csp%20in%20header.html
+
+        Le code inline n'est donc pas bloqué mais le message suivant est affiché dans la console : 
+        Content Security Policy: The page’s settings observed the loading of a resource at inline (“default-src”). A CSP report is being sent.
+    -->
+  </head>
+  <body>
+    <button onclick="msg()">Try it</button>
+    <script>
+      function msg() {
+        alert("Hello\nHow are you?");
+      }
+    </script>
+  </body>
+</html>

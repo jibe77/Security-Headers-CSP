@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 4 with CSP https only</title>
+    <!-- bloc l'usage de toute ressource ne venant pas de https -->
+    <!-- ça ne fait pas de redirection avec la version chiffrée de la page, et ça ne bloque pas
+        les formulaire. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src https:">
+  </head>
+  <body>
+    Image : <img src="https://www.google.fr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+    Image : <img src="http://sdz.tdct.org/sdz/medias/uploads.siteduzero.com_files_5001_6000_5675.jpg"/>
+  </body>
+</html>

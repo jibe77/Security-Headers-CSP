@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 10 without CSP</title>
+  </head>
+  <body>
+    <!-- la page suivante a la CSP suivante : 
+      content-security-policy	frame-ancestors 'self' https://mycourses.w3schools.com;
+      note: attention frame-ancestors n'est supporté qu'en header, et non depuis la balise meta.
+    -->
+    <iframe src="https://www.w3schools.com"></iframe>
+  </body>
+</html>

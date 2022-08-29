@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 4 with CSP mixed content</title>
+    <!-- bloc l'utilisation de HTTP quand la page est accédée depuis HTTPS -->
+    <!-- TODO: tester en externe pour voir si l'image HTTP est chargée. -->
+    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content;">
+  </head>
+  <body>
+    Image : <img src="https://www.google.fr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+    Image : <img src="http://sdz.tdct.org/sdz/medias/uploads.siteduzero.com_files_5001_6000_5675.jpg"/>
+  </body>
+</html>

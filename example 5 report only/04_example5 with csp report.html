@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 5 with CSP Report</title>
+
+    <!-- 
+        on peut modifier le fichier de configuration
+        /etc/apache2/sites-enabled/000-default.conf
+        en modifiant cette ligne :
+          Header always set Content-Security-Policy-Report-Only "default-src 'self';"
+        par la suivante : 
+          Header always set Content-Security-Policy-Report-Only "default-src 'self'; report-uri http://localhost:80/test.cgi"
+    -->
+    <!-- Les messages d'avertissements sont envoyées (logs d'accès) :
+      127.0.0.1 - - [17/Aug/2022:13:12:12 +0200] "POST /test.cgi HTTP/1.1" 404 586 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
+      127.0.0.1 - - [17/Aug/2022:13:12:12 +0200] "POST /test.cgi HTTP/1.1" 404 585 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
+    -->
+
+    <!-- Le rapport contient les informations suivantes : 
+      {
+        "csp-report":{
+          "blocked-uri":"inline",
+          "document-uri":"http://localhost/04_example5%20with%20csp%20report.html",
+          "original-policy":"default-src 'self'; report-uri http://localhost/test.cgi",
+          "referrer":"",
+          "source-file":"http://localhost/04_example5%20with%20csp%20report.html",
+          "violated-directive":"default-src"
+        }
+      }
+
+      Note : cette syntaxe report-uri peut aussi être supportée par le header Content-Security-Policy.
+    -->
+  </head>
+  <body>
+    <button onclick="msg()">Try it</button>
+    <script>
+      function msg() {
+        alert("Hello\nHow are you?");
+      }
+    </script>
+  </body>
+</html>

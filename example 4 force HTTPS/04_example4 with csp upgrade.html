@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 4 with CSP upgrade content</title>
+    <!-- convertie les appels HTTP en HTTPS -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests;">
+  </head>
+  <body>
+    Image upgradée vers HTTPS: <img src="http://www.google.fr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+    <br/>
+    Image non chargée car elle n'existe pas en HTTPS : <img src="http://sdz.tdct.org/sdz/medias/uploads.siteduzero.com_files_5001_6000_5675.jpg"/>
+  </body>
+</html>

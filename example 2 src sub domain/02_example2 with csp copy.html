@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 2 without CSP</title>
+    <!-- on peut limiter l'origine des ressources externes, en utilisant notamment *-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.google.fr/images/;">
+  </head>
+  <body>
+    <img src="https://www.google.fr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+  </body>
+</html>

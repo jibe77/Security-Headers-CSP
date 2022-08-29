@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 12 without CSP</title>
+    <!-- bloc l'usage de toute ressource ne venant pas de https://www.google.fr -->
+    <!-- ça ne fait pas de redirection avec la version chiffrée de la page, et ça ne bloque pas
+    les formulaire. -->
+    <!-- attention, cette policy n'est supportée par aucun navigateur (CSP Level 3). -->
+    <meta http-equiv="Content-Security-Policy" content="navigate-to 'self';">
+  </head>
+  <body>
+    <a href="http://www.google.fr">lien vers google</a>
+    <a href="test.html">lien interne</a>
+    <form method="get" action="http://www.google.fr">
+      <input type="submit" value="form vers google" />
+    </form>
+    <form method="get" action="test.cgi">
+      <input type="submit" value="form local" />
+    </form>
+  </body>
+</html>

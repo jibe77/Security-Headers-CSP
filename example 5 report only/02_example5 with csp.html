@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 5 with CSP Testing</title>
+
+    <!-- la fonction de 'report-only' n'est pas prise en compte par les navigateur quand la page est en local -->
+    <!-- il faut appeler la page depuis le protocol HTTP-->
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self';">
+  </head>
+  <body>
+    <button onclick="msg()">Try it</button>
+    <script>
+      function msg() {
+        alert("Hello\nHow are you?");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 1 with CSP</title>
+    <!-- on voit que ça ne marche plus car le code inline est refusé par la CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
+
+    <!-- la fonction de reporting n'est pas prise en compte par les navigateur quand la page est en local -->
+    <!-- il faut appeler la page depuis le protocol HTTP-->
+    <!--meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self';"-->
+  </head>
+  <body>
+    <button onclick="msg()">Try it</button>
+    <script>
+      function msg() {
+        alert("Hello\nHow are you?");
+      }
+    </script>
+  </body>
+</html>

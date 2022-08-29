@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 1 with CSP</title>
+    
+    <!-- cette policy autorise le chargement des fichiers externes. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'">
+    
+  </head>
+  <body>
+    <button id="myButton">Try it</button>
+    <!-- maintenant le code javascript est complètement externalisé-->
+    <script type="text/javascript" src="05_external.js"></script>
+  </body>
+</html>

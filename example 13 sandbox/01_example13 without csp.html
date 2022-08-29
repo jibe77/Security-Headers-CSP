@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 13 without CSP</title>
+    <script type="text/javascript" src="03_external.js"></script>
+  </head>
+  <body>
+    <a href="http://www.google.fr">lien vers google</a>
+    Effectue un téléchargement : <a href="test.zip">lien vers google</a>
+    On voit que le formulaire est envoyé en cliquant sur le bouton submit.
+    <form method="GET" action="test.cgi">
+      <input type="text" name="my_text" />
+      <input type="submit" />
+    </form>
+    <button onclick="msg()">Try it</button>
+  </body>
+</html>
