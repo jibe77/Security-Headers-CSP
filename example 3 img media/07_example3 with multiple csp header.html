@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example 3 with CSP</title>
-    <!-- bloque les ressources internes et externes. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src 'none';">
+    <title>Example 3 with multiple CSP</title>
+    <!-- la policy la plus restrictive sera appliquée. -->
+    <meta http-equiv="Content-Security-Policy" content="img-src *; media-src *">
   </head>
   <body>
     Image : <img src="https://www.google.fr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>

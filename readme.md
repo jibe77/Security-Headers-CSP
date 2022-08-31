@@ -42,6 +42,38 @@ Pour bloquer les modifications de style intégrées au code HTML (CSS inline avec 
  - https://web.dev/csp/
  - https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
 
+## Configuration à installer sur Apache 2
+
+    # exemple 3, fichier 6
+    <FilesMatch "(06_example3 with multiple csp header.html)$">
+        Header always set Content-Security-Policy "img-src *; media-src *;"
+    </FilesMatch>
+
+    # exemple 3, fichier 7
+    <FilesMatch "(07_example3 with multiple csp header.html)$">
+        Header always set Content-Security-Policy "default-src 'none';"
+    </FilesMatch>
+
+    # example 5, fichier 3
+    <FilesMatch "(03_example5 with csp in header.html)$">
+        Header always set Content-Security-Policy-Report-Only "default-src 'self';"
+    </FilesMatch>
+
+    # example 5, fichier 4
+    <FilesMatch "(04_example5 with csp report.html)$">
+        Header always set Content-Security-Policy-Report-Only "default-src 'self'; report-uri http://localhost:80/test.cgi"
+    </FilesMatch>
+    # example 10, fichier 2
+    <FilesMatch "(LICENSE)$">
+        Header always set Content-Security-Policy "frame-ancestors 'none';"
+        # Header always set Content-Security-Policy "default-src 'none';"
+    </FilesMatch>
+
+    # example 13 fichier 2
+    <FilesMatch "(02_example13 with csp.html)$">
+        Header always set Content-Security-Policy "sandbox;"
+    </FilesMatch>
+
 ## Exemples pour les cas courants
 ### Exemple 1
 
@@ -110,6 +142,24 @@ Exemple d'une image et d'une vidéo chargées sans CSP : <a href="http://localhost
 Exemple d'une image et d'une vidéo chargées avec CSP, tout est bloqué : <a href="http://localhost/csp/example%203%20img%20media/02_example3%20with%20csp%20refuse%20all.html">Lien</a>
 
 Exemple d'une image et d'une vidéo chargées avec CSP, blocage partiel : <a href="http://localhost/csp/example%203%20img%20media/03_example3%20with%20csp%20accept%20media.html">Lien</a>
+
+Attention, si on sépare la policy en deux, c'est la plus restrictive qui s'applique : 
+  Content-Security-Policy: "default-src 'self'"
+  Content-Security-Policy: "img-src 'self' https://www.google.fr/images/;"
+
+Exemple : <a href="http://localhost/csp/example%203%20img%20media/04_example3%20with%20multiple%20csp.html">Lien</a>
+
+Exemple montrant que l'ordre de déclaration n'a pas d'impact : <a href="http://localhost/csp/example%203%20img%20media/05_example3%20with%20multiple%20csp%202.html">Lien</a>
+
+L'ordre de déclaration n'a pas d'impact.
+
+Est-ce qu'il y a une priorité entre les headers et la balise meta ?
+
+Non, cela ne change pas le fonctionnement.
+
+Exemple avec default-src dans la balise meta, et img-src / media-src dans le header : <a href="http://localhost/csp/example%203%20img%20media/06_example3%20with%20multiple%20csp%20header.html">Lien</a>
+
+Exemple avec img-src / media-src dans la balise meta, et default-src dans le header: <a href="http://localhost/csp/example%203%20img%20media/07_example3%20with%20multiple%20csp%20header.html">Lien</a>
 
 ### Exemple 4
 
@@ -228,8 +278,6 @@ Cette page charge une page locale qui est protégée par cette policy :
 <a href="http://localhost/csp/example%2010%20frame/02_example10%20with%20csp%20in%20destination.html">Lien</a>
 
 Remarque : les attributs child-src / frame-src sont pris en compte dans l'attribut générique default-src, mais pas frame-ancestors.
-
-TODO : faire un exemple avec child-src
 
 ### Exemple 11 : Gestion des formulaires
 
