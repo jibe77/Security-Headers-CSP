@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example 13 without CSP</title>
+    <title>Example 13 with CSP</title>
     <script type="text/javascript" src="03_external.js"></script>
+    <!-- on peut voir que cela ne bloque pas le chargement des feuilles de styles -->
+    <!-- link rel="stylesheet" href="https://developer.mozilla.org/static/css/main.7e56c9ea.css" -->
+
     <!-- 
-      Ce header est ajoutÃ© via le serveur web
+      Ce header est ajouté via le serveur web
       Header always set Content-Security-Policy "sandbox;" -->
     <!--
       L'utilisation de la balise meta n'est pas possible pour la sandbox
       <meta http-equiv="Content-Security-Policy" content="sandbox;">
     -->
-    <!-- pour que la sandbox soit activÃ©e, la page doit Ãªtre accÃ©dÃ©e via un serveur web : 
+    <!-- pour que la sandbox soit activée, la page doit être accédée via un serveur web : 
           http://localhost/02_example13%20with%20csp.html
     -->
 
     <!-- 
-      Il existe de nombreuses exceptions pour activer les fonctionnalitÃ©es verrouillÃ©es :
+      Il existe de nombreuses exceptions pour activer les fonctionnalitées verrouillées :
       allow-downloads
 
           Allows for downloads after the user clicks a button or link.
@@ -64,14 +67,14 @@
     -->
   </head>
   <body>
-    <a href="http://www.google.fr">lien vers google</a> (fonctionnalitÃ© non verrouillÃ©e)<br/>
-    <a href="test.zip">Effectue un tÃ©lÃ©chargement</a> (fonctionnalitÃ© verrouillÃ©e)<br/>
-    On voit que le formulaire est envoyÃ© en cliquant sur le bouton submit.
-    <form method="GET" action="test.cgi"> (fonctionnalitÃ© verrouillÃ©e)
+    <a href="http://www.google.fr">lien vers google</a> (fonctionnalité non verrouillée)<br/>
+    Effectue un téléchargement : <a href="test.zip">test.zip</a> (fonctionnalité verrouillée)<br/><br/>
+    On voit que le formulaire n'est pas envoyé :<br/>
+    <form method="GET" action="test.cgi"> (fonctionnalité verrouillée)
       <input type="text" name="my_text" />
       <input type="submit" />
     </form>
     <br/>
-    <button onclick="msg()">Try it</button>(fonctionnalitÃ© verrouillÃ©e)
+    <button onclick="msg()">Try it</button>(fonctionnalité verrouillée)
   </body>
 </html>

@@ -2,16 +2,11 @@
 <html>
   <head>
     <title>Example 8 with CSP</title>
-        <!-- generation du hash : https://report-uri.com/home/hash -->
-    <!-- msg() -> sha256-So6kX9Z8JoHryyBu7rkEDpdM0H4XaxXtjvjPYsneglE= -->
-    <!-- function msg(){alert("Hello\nHow are you?");} -> 
-                sha256-/HfO09ICX6gYhOra3hBOHie5ahbFZod6LM6k+CXKU2U= -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-myNonce';">
   </head>
   <body>
     <!-- onclick n'est pas compatible avec les event handler, donc on déplace le 
           code dans le bloc script -->
-    <!--button onclick="msg()">Try it</button-->
     <button id="myButton">Try it</button>
 
     <script type="text/javascript" nonce="myNonce">

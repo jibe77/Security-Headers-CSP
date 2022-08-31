@@ -6,9 +6,7 @@
     <!-- 
         on peut modifier le fichier de configuration
         /etc/apache2/sites-enabled/000-default.conf
-        en modifiant cette ligne :
-          Header always set Content-Security-Policy-Report-Only "default-src 'self';"
-        par la suivante : 
+        en ajoutant cette ligne :
           Header always set Content-Security-Policy-Report-Only "default-src 'self'; report-uri http://localhost:80/test.cgi"
     -->
     <!-- Les messages d'avertissements sont envoyées (logs d'accès) :
