@@ -237,7 +237,7 @@ On repart de l'exemple de base sans CSP : <a href="http://localhost/csp/example%
 
 L'exemple suivant autorise l'exécution d'un code JavaScript inline : <a href="http://localhost/csp/example%207%20hash/02_example7%20with%20csp.html">Lien</a>
 
-L'exemple suivant autorise l'exécution de plusieurs codes JavaScript inline :  : <a href="http://localhost/csp/example%207%20hash/03%20example7%20with%20multiple%20hashes.html">Lien</a>
+L'exemple suivant autorise l'exécution de plusieurs codes JavaScript inline : <a href="http://localhost/csp/example%207%20hash/03%20example7%20with%20multiple%20hashes.html">Lien</a>
 
 ### Exemple 8 : utilisation d'un nonce
 
